@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K1purkowy — Serwer Minecraft</title>
+<style>
+:root{--bg:#090713;--panel:#151025;--purple:#9b5cff;--pink:#d36bff;--muted:#b9afcc;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--white);background:radial-gradient(ellipse at 50% 0%,#32145c 0,#120d20 42%,var(--bg) 78%);min-height:100vh}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px max(6vw,20px);border-bottom:1px solid #ffffff18;background:#09071380;position:sticky;top:0;backdrop-filter:blur(12px)}
+.logo{font-weight:900;letter-spacing:1px;color:#d7b6ff;font-size:22px}.nav{display:flex;gap:22px}.nav a{color:var(--muted);text-decoration:none}.nav a:hover{color:white}
+main{max-width:1050px;margin:auto;padding:75px 22px}.hero{text-align:center;padding:40px 0 65px}.tag{display:inline-block;padding:8px 14px;border:1px solid #a56aff66;border-radius:99px;color:#d7b6ff;background:#9b5cff16;font-size:13px}.hero h1{font-size:clamp(42px,8vw,76px);margin:20px 0 12px;text-shadow:0 0 35px #a04cff80}.hero p{color:var(--muted);font-size:18px}.ip{display:inline-flex;align-items:center;gap:12px;margin-top:18px;padding:14px 20px;background:#ffffff0c;border:1px solid #ffffff20;border-radius:12px;font-weight:bold;letter-spacing:.4px}.ip button,.primary{border:0;border-radius:9px;background:linear-gradient(120deg,var(--purple),var(--pink));color:white;padding:11px 16px;font-weight:bold;cursor:pointer}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin:25px 0 55px}.card{background:linear-gradient(145deg,#1b1430,#100d1b);border:1px solid #ffffff18;border-radius:16px;padding:24px}.card h2{margin-top:0;color:#d7b6ff}.card p{color:var(--muted);line-height:1.55}.codes{max-width:600px;margin:0 auto;background:linear-gradient(145deg,#201638,#120e20);border:1px solid #a56aff55;border-radius:18px;padding:30px;box-shadow:0 15px 60px #0008}.codes h2{text-align:center;font-size:28px;margin:0 0 8px}.codes .hint{text-align:center;color:var(--muted);margin:0 0 22px}.entry{display:flex;gap:10px}.entry input{min-width:0;flex:1;background:#090713;border:1px solid #ffffff30;border-radius:9px;padding:14px;color:white;font-size:16px;outline:none}.entry input:focus{border-color:var(--purple)}#result{min-height:25px;text-align:center;margin:16px 0 0;color:#cbb4ff}.foot{text-align:center;color:#817894;padding:35px 10px;font-size:13px}
+@media(max-width:600px){header{padding:18px}.nav{gap:12px}.nav a{font-size:13px}.entry{flex-direction:column}.entry button{width:100%}main{padding-top:40px}}
+</style>
+</head>
+<body>
+<header><div class="logo">✦ K1PURKOWY</div><nav class="nav"><a href="#start">Start</a><a href="#info">Serwer</a><a href="#kody">Kody</a></nav></header>
+<main>
+<section class="hero" id="start"><span class="tag">✦ OFICJALNA STRONA SERWERA</span><h1>K1PURKOWY</h1><p>Wbijaj na serwer i rozpocznij swoją przygodę!</p><div class="ip"><span id="serverIp">K1purkowy.aternos.me</span><button onclick="copyIp()">Kopiuj IP</button></div></section>
+<section class="cards" id="info"><article class="card"><h2>⛏ Rozgrywka</h2><p>Dołącz do świata K1purkowy i sprawdź, co czeka na serwerze.</p></article><article class="card"><h2>⚔ Wydarzenia</h2><p>Wypatruj eventów, nagród i specjalnych atrakcji.</p></article><article class="card"><h2>💜 Społeczność</h2><p>Graj ze znajomymi i poznawaj innych graczy.</p></article></section>
+<section class="codes" id="kody"><h2>🎁 Kody</h2><p class="hint">Masz kod? Wpisz go poniżej i kliknij „Odbierz”.</p><div class="entry"><input id="codeInput" type="text" placeholder="Wpisz kod..." autocomplete="off" maxlength="40"><button class="primary" onclick="redeemCode()">Odbierz</button></div><p id="result" role="status" aria-live="polite"></p></section>
+</main>
+<footer class="foot">© 2026 K1purkowy · Strona serwera Minecraft</footer>
+<script>
+function copyIp(){const ip=document.getElementById('serverIp').textContent;navigator.clipboard?.writeText(ip).then(()=>alert('Skopiowano IP serwera!')).catch(()=>alert('IP serwera: '+ip));}
+function redeemCode(){const input=document.getElementById('codeInput');const result=document.getElementById('result');const code=input.value.trim();if(code.toLowerCase()==='k1purkowy'){result.textContent='✓ Kod K1purkowy jest poprawny!';result.style.color='#8ff0b0';}else if(!code){result.textContent='Wpisz najpierw kod.';result.style.color='#ffd27a';}else{result.textContent='Nieprawidłowy kod.';result.style.color='#ff8c9b';}}
+document.getElementById('codeInput').addEventListener('keydown',e=>{if(e.key==='Enter')redeemCode()});
+</script>
+</body></html>
